@@ -105,7 +105,13 @@ fun SecondScreen(
                 )
             },
             confirmButton = {
-                Button(onClick = { showCorrectDialog = false }) {
+                Button(
+                    onClick = {
+                        showCorrectDialog = false
+                        val intent = Intent(context, ThirdActivity::class.java)
+                        context.startActivity(intent)
+                    }
+                ) {
                     Text(
                         text="✔",
                         fontSize = 20.sp,

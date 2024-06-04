@@ -207,6 +207,7 @@ fun ThirdScreen(name: String, modifier: Modifier = Modifier) {
 
 @Composable
 fun Drag(isDraggable: Boolean) {
+    val context = LocalContext.current  //取得App的運行環境
     val density = LocalDensity.current
 
     val initialOffsetX = with(density) { 275.dp.toPx() } // 調整 X 坐標
@@ -328,7 +329,11 @@ fun Drag(isDraggable: Boolean) {
                 },
                 confirmButton = {
                     Button(
-                        onClick = { showDialog = false }
+                        onClick = {
+                            showDialog = false
+                            val intent = Intent(context, ForthActivity::class.java)
+                            context.startActivity(intent)
+                        }
                     ) {
                         Text(
                             text = "✔",
